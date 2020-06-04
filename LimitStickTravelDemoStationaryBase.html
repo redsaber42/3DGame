@@ -33,6 +33,7 @@
 	   
 	// Create Light
 	let ambientLight = new THREE.AmbientLight( 0xcccccc, 1.00 );
+	ambientLight.position.set(0, 10, 10);
 	scene.add( ambientLight );
 	 
 
@@ -88,7 +89,7 @@
    	  requestAnimationFrame(animate);
 
    	  frameTime = clock.getDelta();
-
+/*
    	  if(sunRiseFlag == true){
       	    sunHeight = sunHeight + 60 * frameTime;
    	  }
@@ -105,10 +106,8 @@
    	  if(sunHeight < 0){
       	    sunHeight = 0;
       	    sunRiseFlag = true;
-   	  }
-
-   	  light.position.set(50,sunHeight,50);
-   	  sphere.position = light.position;
+   	  } */
+		
 
    
    	  if( keyboard.pressed("D") ){
