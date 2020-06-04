@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
    <head>
-      <title>Limit Stick Travel Game Test 4.4</title>
+      <title>Limit Stick Travel Game Test 4.5</title>
    </head>
    <body>
       <div id="help" style="position:fixed; left:40%; top:4%; color:grey;">
@@ -47,7 +47,7 @@
                       mouseSupport: true,
 		      stationaryBase: true,
                       baseX: 200,
-                      baseY: 1200,
+                      baseY: screen.height / 2,
 		      limitStickTravel: true,
 		      stickRadius: 50
          });
@@ -97,7 +97,7 @@
 		
           keyboard.update();
 		
-	  let translateSpeed = 4; // units per second
+	  let translateSpeed = 1; // units per second
 	  let distance = translateSpeed * deltaTime;
    
    	  if( keyboard.isKeyPressed("D") ){
