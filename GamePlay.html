@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
    <head>
-      <title>Limit Stick Travel Game Test 4.2</title>
+      <title>Limit Stick Travel Game Test 4.3</title>
    </head>
    <body style=“position: fixed; touch-action: none;”>
       <div id="help" style="position:fixed; left:40%; top:4%; color:grey;">
@@ -19,6 +19,8 @@
       <script src="JS/three.min.js"></script>
       <script src="JS/keyboard.js"></script>
       <script src="JS/virtualjoystick.js"></script>
+
+      <div style=“position:fixed;”>
       <script style=“position: fixed;”>
 	var scene, camera, renderer, clock, deltaTime, totalTime, keyboard;
 	
@@ -133,6 +135,7 @@
   	  camera.updateProjectionMatrix();
    	  renderer.setSize( window.innerWidth, window.innerHeight );   
 	}
-      </script>     
+      </script>   
+      </div>  
    </body>
 </html>
