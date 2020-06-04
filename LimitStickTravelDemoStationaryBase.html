@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
    <head>
-      <title>-Limit Stick-Travel Demo-</title>
+      <title>Limit Stick-Travel Demo</title>
    </head>
    <body>
       <div id="help" style="position:fixed; left:40%; top:4%; color:grey;">
@@ -130,10 +130,10 @@
 	     cube.position.x = cube.position.x - 60 * frameTime;     
  	   }
   	   if( joystick.up() ){
-	     cube.position.y = cube.position.y + 60 * frameTime;       
+	     cube.position.y = cube.position.z + 60 * frameTime;       
  	   }
  	   if( joystick.down() ){
- 	     cube.position.y = cube.position.y - 60 * frameTime;
+ 	     cube.position.y = cube.position.z - 60 * frameTime;
    	   }
 
    	   renderer.render( scene, camera );
