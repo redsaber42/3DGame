@@ -42,7 +42,7 @@
                       mouseSupport: true,
 		      stationaryBase: true,
                       baseX: 200,
-                      baseY: 200,
+                      baseY: -200,
 		      limitStickTravel: true,
 		      stickRadius: 50
          });
@@ -53,22 +53,23 @@
 	window.addEventListener('resize', onWindowResize, false); 
 
 	var cubeGeometry = new THREE.CubeGeometry(20,20,20);
-	var cubeMaterial = new THREE.MeshLambertMaterial({ color: 'rgb(255,0,0)' });
+	var cubeMaterial = new THREE.MeshLambertMaterial({ color: 'rgb(0,0,255)' });
 	var cube = new THREE.Mesh(cubeGeometry, cubeMaterial);
+	cube.position.set( 0, -30, 0 );
 	scene.add(cube);
 
-	var sphereGeometry = new THREE.SphereGeometry(5);
+	/*var sphereGeometry = new THREE.SphereGeometry(5);
 	var sphereMaterial = new THREE.MeshBasicMaterial({ color: 'rgb(255,255,0)' });
 	var sphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
-	scene.add(sphere);
+	scene.add(sphere); */
          
 	/*     
 	var light = new THREE.PointLight( 'rgb(255,255,255)', 1, 0 );
 	scene.add(light);
 	*/
 
-	var sunRiseFlag = true;
-	var sunHeight = 0;
+	//var sunRiseFlag = true;
+	//var sunHeight = 0;
 	var frameTime = 0;
 
 	/*
@@ -117,10 +118,10 @@
  	    cube.position.x = cube.position.x - 60 * frameTime;
   	  }
    	  if( keyboard.pressed("W") ){
-	     cube.position.y = cube.position.y + 60 * frameTime;
+	     cube.position.y = cube.position.z + 60 * frameTime;
    	  }
    	  if( keyboard.pressed("S") ){
- 	    cube.position.y = cube.position.y - 60 * frameTime;
+ 	    cube.position.y = cube.position.z - 60 * frameTime;
    	  }
 
   	  if( joystick.right() ){
@@ -139,7 +140,7 @@
    	   renderer.render( scene, camera );
    
    	   debugText1.innerHTML = "Cube position X: " + cube.position.x.toFixed(1);
-  	   debugText2.innerHTML = "Cube position Y: " + cube.position.y.toFixed(1);
+  	   debugText2.innerHTML = "Cube position Z: " + cube.position.z.toFixed(1);
    
 	}
 
