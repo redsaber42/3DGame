@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
    <head>
-      <title>Limit Stick Travel Game Test 4.1</title>
+      <title>Limit Stick Travel Game Test 4.2</title>
    </head>
    <body>
       <div id="help" style="position:fixed; left:40%; top:4%; color:grey;">
@@ -47,7 +47,7 @@
                       mouseSupport: true,
 		      stationaryBase: true,
                       baseX: 200,
-                      baseY: 200,
+                      baseY: 100,
 		      limitStickTravel: true,
 		      stickRadius: 50
          });
@@ -64,7 +64,7 @@
 	scene.add(cube);
 	      
 	var planeGeometry = new THREE.PlaneGeometry(20,20,20);
-	var planeMaterial = new THREE.MeshLambertMaterial({ color: 'rgb(0,0,0)' });
+	var planeMaterial = new THREE.MeshLambertMaterial({ color: 'rgb(255,255,255)' });
 	var plane = new THREE.Mesh(cubeGeometry, cubeMaterial);
 	plane.position.set( 0, -30, 0 );
 	scene.add(plane);
