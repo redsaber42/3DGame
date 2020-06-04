@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
    <head>
-      <title>Limit Stick Travel Game Test 3</title>
+      <title>Limit Stick Travel Game Test 4</title>
    </head>
    <body>
       <div id="help" style="position:fixed; left:40%; top:4%; color:grey;">
@@ -57,11 +57,17 @@
 	document.body.appendChild(renderer.domElement);
 	window.addEventListener('resize', onWindowResize, false); 
 
-	var cubeGeometry = new THREE.CubeGeometry(20,20,20);
+	var cubeGeometry = new THREE.CubeGeometry(1,1,1);
 	var cubeMaterial = new THREE.MeshLambertMaterial({ color: 'rgb(0,0,255)' });
 	var cube = new THREE.Mesh(cubeGeometry, cubeMaterial);
-	cube.position.set( 0, -30, 0 );
+	cube.position.set( 0, 0, 0 );
 	scene.add(cube);
+	      
+	var planeGeometry = new THREE.PlaneGeometry(20,20,20);
+	var planeMaterial = new THREE.MeshLambertMaterial({ color: 'rgb(0,0,0)' });
+	var plane = new THREE.Mesh(cubeGeometry, cubeMaterial);
+	plane.position.set( 0, -30, 0 );
+	scene.add(plane);
 
 	var debugText1 = document.getElementById("debug1");
 	var debugText2 = document.getElementById("debug2");
