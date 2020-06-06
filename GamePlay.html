@@ -31,6 +31,7 @@
       <script src="JS/three.min.js"></script>
       <script src="JS/keyboard.js"></script>
 	   
+      <!-- The first part has the initial setup -->   
       <script>
 	var sceneCanvas = document.getElementById("sceneCanvas");
 	var scene, camera, renderer, clock, deltaTime, totalTime, keyboard;
@@ -57,7 +58,7 @@
 
 	keyboard = new Keyboard();
 
-  var renderer = new THREE.WebGLRenderer({antialias: true, canvas: sceneCanvas});
+        var renderer = new THREE.WebGLRenderer({antialias: true, canvas: sceneCanvas});
 	renderer.setSize(window.innerWidth, window.innerHeight);
 	document.body.appendChild(renderer.domElement);
 	window.addEventListener('resize', onWindowResize, false); 
@@ -74,9 +75,28 @@
 	plane.position.set( 0, -30, 0 );
 	scene.add(plane);
 
+	// Will be removed in final version
 	var debugText1 = document.getElementById("debug1");
 	var debugText2 = document.getElementById("debug2");
+      </script> 
 
+	   
+	   
+      <!-- The second part has the ongoing controls and effects -->
+      <script src="JS/virtualjoystick.js"></script>  
+      <script>
+	var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+	if (isMobile) {
+		var joystick = new VirtualJoystick({
+                      mouseSupport: true,
+		      stationaryBase: true,
+                      baseX: window.innerWidth / 6,
+                      baseY: window.innerHeight / 4 * 3,
+		      limitStickTravel: true,
+		      stickRadius: 50
+         }); 
+	}   
+	      
 	animate();
 
 	function animate(){
@@ -138,21 +158,6 @@
   	  camera.updateProjectionMatrix();
    	  renderer.setSize( window.innerWidth, window.innerHeight );   
 	}
-      </script> 
-
-      <script src="JS/virtualjoystick.js"></script>  
-      <script>
-	var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-	if (isMobile) {
-		var joystick = new VirtualJoystick({
-                      mouseSupport: true,
-		      stationaryBase: true,
-                      baseX: window.innerWidth / 6,
-                      baseY: window.innerHeight / 4 * 3,
-		      limitStickTravel: true,
-		      stickRadius: 50
-         }); 
-	}   
       </script>
    </body>
 </html>
