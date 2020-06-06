@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
    <head>
-      <title>Joystick Game Test 1.0.3</title>
+      <title>Joystick Game Test 1.0.4</title>
       <style>
 	      body {
 		      margin: 0;
@@ -142,14 +142,17 @@
 
       <script src="JS/virtualjoystick.js"></script>  
       <script>
-	var joystick = new VirtualJoystick({
+	var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+	if (isMobile) {
+		var joystick = new VirtualJoystick({
                       mouseSupport: true,
 		      stationaryBase: true,
                       baseX: window.innerWidth / 6,
                       baseY: window.innerHeight / 4 * 3,
 		      limitStickTravel: true,
 		      stickRadius: 50
-         });     
+         }); 
+	}   
       </script>
    </body>
 </html>
