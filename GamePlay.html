@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
    <head>
-      <title>Joystick Game Test 1.0.4</title>
+      <title>Joystick Game Test 1.0.51</title>
       <style>
 	      body {
 		      margin: 0;
@@ -113,19 +113,22 @@
    
 	}
 	      
-	function render()
-        {
-                renderer.render( scene, camera );
-        }
+      function render()
+      {
+        renderer.render( scene, camera );
+      }
 	      
-	function update(){
+      function update(){
+        if(!isMobile) {
+	  keyboard.update();
+	}
+
 		
-          keyboard.update();
-		
-	  let translateSpeed = 1; // units per second
-	  let distance = translateSpeed * deltaTime;
+	let translateSpeed = 1; // units per second
+	let distance = translateSpeed * deltaTime;
    
-   	  if( keyboard.isKeyPressed("D") ){
+	if(!isMobile){
+	  if( keyboard.isKeyPressed("D") ){
  	    cube.translateX( distance );
    	  }
    	  if( keyboard.isKeyPressed("A") ){
@@ -137,8 +140,10 @@
    	  if( keyboard.isKeyPressed("S") ){
  	    cube.translateZ( distance );
    	  }
+	}
 
-  	  if( joystick.right() ){
+        if (isMobile) {
+	   if( joystick.right() ){
 	     cube.translateX( distance );  
    	   }
   	   if( joystick.left() ){
@@ -150,14 +155,15 @@
  	   if( joystick.down() ){
  	     cube.translateZ( distance );
    	   }
-	
 	}
 
-	function onWindowResize(){
+      }
+  	  
+      function onWindowResize(){
    	  camera.aspect = window.innerWidth / window.innerHeight;
   	  camera.updateProjectionMatrix();
    	  renderer.setSize( window.innerWidth, window.innerHeight );   
-	}
+      }
       </script>
    </body>
 </html>
