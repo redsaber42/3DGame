@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
    <head>
-      <title>Joystick Game Test 1.0.7</title>
+      <title>Joystick Game Test 1.0.8</title>
       <style>
 	      body {
 		      margin: 0;
@@ -87,14 +87,29 @@
 	      
 	var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 	if (isMobile) {
-		var joystick = new VirtualJoystick({
+		if (window.innerWidth > window.innerHeight) {
+		   // Landscape
+		   var joystick = new VirtualJoystick({
+                      mouseSupport: true,
+		      stationaryBase: true,
+                      baseX: window.innerWidth / 6,
+                      baseY: window.innerHeight / 2,
+		      limitStickTravel: true,
+		      stickRadius: 50
+                   }); 
+		}
+		else { 
+		    // Portrait
+	            var joystick = new VirtualJoystick({
                       mouseSupport: true,
 		      stationaryBase: true,
                       baseX: window.innerWidth / 6,
                       baseY: window.innerHeight / 4 * 3,
 		      limitStickTravel: true,
 		      stickRadius: 50
-         }); 
+                   }); 
+		}
+		
 	}   
 	 
 	      
