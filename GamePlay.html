@@ -1,9 +1,18 @@
 <!DOCTYPE html>
 <html>
    <head>
-      <title>Limit Stick Travel Game Test 4.6</title>
+      <title>Limit Stick Travel Game Test 4.7</title>
+      <style>
+	      body {
+		      margin: 0;
+	      }  
+	      
+	      canvas {
+		      display: block;
+	      }
+      </style>
    </head>
-   <body style=“position:absolute; background-color: black;”>
+   <body>
       <div id="help" style="position:fixed; left:40%; top:4%; color:grey;">
          virtualjoystick.js Limit Stick-Travel Demo with Stationary Base
       </div>
@@ -13,8 +22,9 @@
       </div>
 
       <div id="debug2" style="position:fixed; left:5%; top:8%; color:grey;">
-         Debug Info Z is not currently available.
+		     Debug Info Z is not currently available.  
       </div>
+      <canvas id="sceneCanvas"></canvas>
 
       <script src="JS/three.min.js"></script>
       <script src="JS/keyboard.js"></script>
@@ -22,6 +32,7 @@
 
       <div style=“position:absolute;”>
       <script>
+	var sceneCanvas = document.getElementById("sceneCanvas");
 	var scene, camera, renderer, clock, deltaTime, totalTime, keyboard;
 	
 	// Create Scene
@@ -54,7 +65,7 @@
 		      stickRadius: 50
          });
 
-	var renderer = new THREE.WebGLRenderer();
+  var renderer = new THREE.WebGLRenderer({antialias: true, canvas: myCanvas});
 	renderer.setSize(window.innerWidth, window.innerHeight);
 	document.body.appendChild(renderer.domElement);
 	window.addEventListener('resize', onWindowResize, false); 
