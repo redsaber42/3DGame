@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
    <head>
-      <title>Limit Stick Travel Game Test 4.7</title>
+      <title>Joystick Travel Game Test 4.8</title>
       <style>
 	      body {
 		      margin: 0;
@@ -65,7 +65,7 @@
 		      stickRadius: 50
          });
 
-  var renderer = new THREE.WebGLRenderer({antialias: true, canvas: myCanvas});
+  var renderer = new THREE.WebGLRenderer({antialias: true, canvas: sceneCanvas});
 	renderer.setSize(window.innerWidth, window.innerHeight);
 	document.body.appendChild(renderer.domElement);
 	window.addEventListener('resize', onWindowResize, false); 
