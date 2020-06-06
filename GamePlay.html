@@ -13,7 +13,6 @@
 		      position:fixed;
 	      }
       </style>
-      <canvas id="sceneCanvas"></canvas>
    </head>
    <body>
       <div id="help" style="position:fixed; left:40%; top:4%; color:grey;">
@@ -28,10 +27,10 @@
 		     Debug Info Z is not currently available.  
       </div>
 	   
- 
+      <canvas id="sceneCanvas"></canvas>
       <script src="JS/three.min.js"></script>
       <script src="JS/keyboard.js"></script>
-
+	   
       <script>
 	var sceneCanvas = document.getElementById("sceneCanvas");
 	var scene, camera, renderer, clock, deltaTime, totalTime, keyboard;
@@ -57,14 +56,6 @@
 	 
 
 	keyboard = new Keyboard();
-	var joystick = new VirtualJoystick({
-                      mouseSupport: true,
-		      stationaryBase: true,
-                      baseX: window.innerWidth / 6,
-                      baseY: window.innerHeight / 4,
-		      limitStickTravel: true,
-		      stickRadius: 50
-         });
 
   var renderer = new THREE.WebGLRenderer({antialias: true, canvas: sceneCanvas});
 	renderer.setSize(window.innerWidth, window.innerHeight);
@@ -148,6 +139,17 @@
    	  renderer.setSize( window.innerWidth, window.innerHeight );   
 	}
       </script> 
+
       <script src="JS/virtualjoystick.js"></script>  
+      <script>
+	var joystick = new VirtualJoystick({
+                      mouseSupport: true,
+		      stationaryBase: true,
+                      baseX: window.innerWidth / 6,
+                      baseY: window.innerHeight / 4,
+		      limitStickTravel: true,
+		      stickRadius: 50
+         });     
+      </script>
    </body>
 </html>
