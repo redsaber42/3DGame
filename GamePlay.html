@@ -151,6 +151,10 @@
    	   deltaTime = clock.getDelta();
            totalTime += deltaTime;
 		
+           if(mixer) {
+		   mixer.update(deltaTime)
+	   }
+		
            update();
            render();
 		
