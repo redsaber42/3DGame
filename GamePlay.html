@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
    <head>
-      <title>Joystick Travel Game Test 4.9</title>
+      <title>Joystick Travel Game Test 4.91</title>
       <style>
 	      body {
 		      margin: 0;
@@ -32,7 +32,6 @@
       <script src="JS/keyboard.js"></script>
       <script src="JS/virtualjoystick.js"></script>
 
-      <div style=“position:absolute;”>
       <script>
 	var sceneCanvas = document.getElementById("sceneCanvas");
 	var scene, camera, renderer, clock, deltaTime, totalTime, keyboard;
@@ -62,7 +61,7 @@
                       mouseSupport: true,
 		      stationaryBase: true,
                       baseX: window.innerWidth / 6,
-                      baseY: window.innerHeight / 4 * 2.5,
+                      baseY: window.innerHeight / 4,
 		      limitStickTravel: true,
 		      stickRadius: 50
          });
@@ -148,7 +147,6 @@
   	  camera.updateProjectionMatrix();
    	  renderer.setSize( window.innerWidth, window.innerHeight );   
 	}
-      </script>   
-      </div>  
+      </script>    
    </body>
 </html>
