@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
    <head>
-      <title>Joystick Game Test 1.0.8</title>
+      <title>Joystick Game Test 1.0.9</title>
       <style>
 	      body {
 		      margin: 0;
@@ -68,6 +68,31 @@
 
 	keyboard = new Keyboard();
 
+	 // model
+         var loader = new FBXLoader();
+         loader.load( 'models/fbx/man.fbx', function ( object ) {
+   
+            mixer = new THREE.AnimationMixer( object );
+   
+            var action = mixer.clipAction( object.animations[ 0 ] );
+            action.play();
+    
+            object.traverse( function ( child ) {
+  
+               if ( child.isMesh ) {
+    
+                 child.castShadow = true;
+                 child.receiveShadow = true;                      
+	       }
+  
+           } );
+   
+            scene.add( object );
+   
+          } );                
+	      
+	      
+	      
         var renderer = new THREE.WebGLRenderer({antialias: true, canvas: sceneCanvas});
 	renderer.setSize(window.innerWidth, window.innerHeight);
 	document.body.appendChild(renderer.domElement);
