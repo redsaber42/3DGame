@@ -31,14 +31,14 @@ function init() {
 	camera.add( pointLight );
 	scene.add( camera );
 
-	var loader = new GLTFLoader().setPath( 'models/gltf/shark/' );
-	loader.load( 'shark.gltf', function ( gltf ) {
+	var loader = new GLTFLoader();
+	loader.load( 'Crypto.glb', function ( model ) {
 
-		mixer = new THREE.AnimationMixer( gltf.scene );
-		var action = mixer.clipAction( gltf.animations[ 0 ] );
+		mixer = new THREE.AnimationMixer( model.scene );
+		var action = mixer.clipAction( model.animations[ 0 ] );
 		action.play();
 
-		scene.add( gltf.scene );
+		scene.add( model.scene );
 
 	} );
 
