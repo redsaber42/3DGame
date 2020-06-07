@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title>three.js - Crypto 6</title>
+    <title>three.js - Crypto 7</title>
 
     <style>
     	body{
@@ -59,9 +59,9 @@
         mesh.position.z = -10;
 */
 	mixer = new THREE.AnimationMixer(model.scene);
-	mixer.clipAction(0).play();
+	mixer.clipAction("ArmatureAction").play();
         //model.animations.forEach((clip) => {mixer.clipAction(clip).play(); });
-        scene.add(model.scene)  
+        scene.add(model.scene);  
     })
     //RENDER LOOP
     render();
