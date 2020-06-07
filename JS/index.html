@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title>threejs - Crypto</title>
+    <title>three.js - Crypto</title>
 
     <style>
     	body{
@@ -60,10 +60,9 @@
         mesh.children[0].material = new THREE.MeshLambertMaterial();
 		scene.add( mesh );
         mesh.position.z = -10;
-	     mixer = new THREE.AnimationMixer( object );
-   
-            var action = mixer.clipAction( object.animations[ 0 ] );
-            action.play();
+	
+        gltfStore.mixer = new THREE.AnimationMixer(gltf.scene);
+        gltfStore.mixer.clipAction(gltfStore.animations[0]).play();
     }
 
 
@@ -76,9 +75,6 @@
     function render() {
 
         delta += 0.1;
-           if(mixer) {
-		   mixer.update(deltaTime)
-	   }
         if (mesh) {
         
             mesh.rotation.y += 0.01;
