@@ -69,8 +69,8 @@
 	keyboard = new Keyboard();
 
 	 // model
-         var loader = new FBXLoader();
-         loader.load( 'models/fbx/man.fbx', function ( object ) {
+         var loader = new GLTFLoader();
+         loader.load( 'JS/Crypto.glb', function ( object ) {
    
             mixer = new THREE.AnimationMixer( object );
    
