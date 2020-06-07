@@ -63,9 +63,6 @@
         //model.animations.forEach((clip) => {mixer.clipAction(clip).play(); });
         scene.add(model.scene)  
     })
-
-    gltfStore.mixer = new THREE.AnimationMixer(gltf.scene);
-    gltfStore.mixer.clipAction(gltfStore.animations[0]).play();
     //RENDER LOOP
     render();
 
