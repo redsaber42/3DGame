@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title>three.js - Crypto 1</title>
+    <title>three.js - Crypto 2</title>
 
     <style>
     	body{
@@ -62,11 +62,11 @@
 		scene.add( mesh );
         mesh.position.z = -10;
 	
-        gltfStore.mixer = new THREE.AnimationMixer(gltf.scene);
-        gltfStore.mixer.clipAction(gltfStore.animations[0]).play();
+        
     }
 
-
+    gltfStore.mixer = new THREE.AnimationMixer(gltf.scene);
+    gltfStore.mixer.clipAction(gltfStore.animations[0]).play();
     //RENDER LOOP
     render();
 
