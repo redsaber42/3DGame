@@ -60,6 +60,10 @@
         mesh.children[0].material = new THREE.MeshLambertMaterial();
 		scene.add( mesh );
         mesh.position.z = -10;
+	     mixer = new THREE.AnimationMixer( object );
+   
+            var action = mixer.clipAction( object.animations[ 0 ] );
+            action.play();
     }
 
 
@@ -72,13 +76,16 @@
     function render() {
 
         delta += 0.1;
-
+           if(mixer) {
+		   mixer.update(deltaTime)
+	   }
         if (mesh) {
         
             mesh.rotation.y += 0.01;
 
             //animation mesh
             // mesh.morphTargetInfluences[ 0 ] = Math.sin(delta) * 20.0;
+	   
         }
 
     	renderer.render(scene, camera);
