@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title>three.js - Crypto 2</title>
+    <title>three.js - Crypto 3</title>
 
     <style>
     	body{
@@ -49,19 +49,20 @@
   
     var loader = new THREE.GLTFLoader();
 
-    loader.load('Crypto.glb', handle_load);
-
-    var mesh;
-
-    function handle_load(gltf) {
-
+    loader.load('Crypto.glb', function( model ){
+/*
         console.log(gltf);
         mesh = gltf.scene;
         console.log(mesh.children[0]);
         mesh.children[0].material = new THREE.MeshLambertMaterial();
 		scene.add( mesh );
         mesh.position.z = -10;
-	
+*/
+	mixer = new THREE.AnimationMixer(model.scene);
+	mixer.clipAction(0).play();
+        //model.animations.forEach((clip) => {mixer.clipAction(clip).play(); });
+        scene.add(model.scene)}
+
         
     }
 
@@ -75,7 +76,10 @@
 
     function render() {
 
-        delta += 0.1;
+        //delta += 0.1;
+	  delta = clock.getDelta;
+	  mixer.update( delta );
+	
         if (mesh) {
         
             mesh.rotation.y += 0.01;
