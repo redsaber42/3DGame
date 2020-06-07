@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
    <head>
-      <title>Joystick Game Test 1.0.9</title>
+      <title>Joystick Game Test 1.0.10</title>
       <style>
 	      body {
 		      margin: 0;
@@ -112,6 +112,9 @@
 	      
 	var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 	if (isMobile) {
+		if (/iPhone/i.test(navigator.userAgent)) {
+			alert("This web application does not work very well on iPhone's. You may want to switch to a tablet or computer for a better experience.");
+		}
 		if (window.innerWidth > window.innerHeight) {
 		   // Landscape
 		   var joystick = new VirtualJoystick({
