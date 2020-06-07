@@ -21,6 +21,7 @@
     var renderer,
     	scene,
     	camera,
+	clock,
     	myCanvas = document.getElementById('myCanvas');
 
     //RENDERER
@@ -35,6 +36,9 @@
     //CAMERA
     camera = new THREE.PerspectiveCamera(35, window.innerWidth / window.innerHeight, 0.1, 1000 );
 
+    //CLOCK
+    clock = new THREE.Clock();
+	    
     //SCENE
     scene = new THREE.Scene();
     scene.background = new THREE.Color( 0xffff00 );
