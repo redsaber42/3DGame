@@ -53,21 +53,58 @@
     scene.add(light2);
   
     var loader = new THREE.GLTFLoader();
+	    const onLoad(gltf, position) => {
+		    const model = gltf.scene.children[ 0 ];
+		    model.position.copy( position );
+		    const animation = gltf.animations[ 0 ];
+		    const mixer = new THREE.AnimationMixer( model );
+		    mixers.push( mixer );
+		    
+		    const action = mixer.clipAction( animation );
+		    action.play();
+		    
+		    scene.add( model );
+	    };
+	    
+	    const onProgress = () => {};
+	    
+	    const onError = (errorMessage) => { console.log( errorMessage ); };
+	    
+	    const playerPosition = new THREE.Vector3(0, 0, 0);
+	    loader.load('Crypto.glb', gltf => onLoad(gltf, playerPosition), onProgress, onError );
 
+	    /*
     loader.load('Crypto.glb', function( model ){
-/*
-        console.log(gltf);
-        mesh = gltf.scene;
-        console.log(mesh.children[0]);
-        mesh.children[0].material = new THREE.MeshLambertMaterial();
+
+        //console.log(gltf);
+        //mesh = gltf.scene;
+        //console.log(mesh.children[0]);
+        //mesh.children[0].material = new THREE.MeshLambertMaterial();
 		scene.add( mesh );
-        mesh.position.z = -10;
-*/
+        //mesh.position.z = -10;
+
 	mixer = new THREE.AnimationMixer(model.scene);
 	mixer.clipAction("ArmatureAction").play();
         //model.animations.forEach((clip) => {mixer.clipAction(clip).play(); });
         scene.add(model.scene);  
-    })
+    }) */
+	    
+    const onLoad = ( gltf, position ) => {
+
+    const model = gltf.scene.children[ 0 ];
+    model.position.copy( position );
+
+    const animation = gltf.animations[ 0 ];
+
+    const mixer = new THREE.AnimationMixer( model );
+    mixers.push( mixer );
+
+    const action = mixer.clipAction( animation );
+    action.play();
+
+    scene.add( model );
+
+  };
     //RENDER LOOP
     render();
 
