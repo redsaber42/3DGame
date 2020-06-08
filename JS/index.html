@@ -51,8 +51,10 @@
     var light2 = new THREE.PointLight(0xffffff, 0.5);
     light2.position.set(0, 0, -10);
     scene.add(light2);
+	    load();
   
-    var loader = new THREE.GLTFLoader();
+	    function load() {
+		    var loader = new THREE.GLTFLoader();
 	    const onLoad(gltf, position) => {
 		    const model = gltf.scene.children[ 0 ];
 		    model.position.copy( position );
@@ -71,7 +73,9 @@
 	    const onError = (errorMessage) => { console.log( errorMessage ); };
 	    
 	    const playerPosition = new THREE.Vector3(0, 0, 0);
-	    loader.load('Crypto.glb', gltf => onLoad(gltf, playerPosition), onProgress, onError );
+	    loader.load('Crypto.glb', gltf => onLoad(gltf, playerPosition), onProgress, onError ); 
+	    }
+   
 
 	    /*
     loader.load('Crypto.glb', function( model ){
@@ -88,7 +92,7 @@
         //model.animations.forEach((clip) => {mixer.clipAction(clip).play(); });
         scene.add(model.scene);  
     }) */
-	    
+	/*    
     const onLoad = ( gltf, position ) => {
 
     const model = gltf.scene.children[ 0 ];
@@ -104,7 +108,7 @@
 
     scene.add( model );
 
-  };
+  }; */
     //RENDER LOOP
     render();
 
