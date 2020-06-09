@@ -1,6 +1,4 @@
 # 3DGame
 An open-source 3D game for computer or mobile
 
-Website <a href="https://d4q2.github.io/3DGame/GamePlay">here</a>.
-
-<button onclick="window.location.href='https://d4q2.github.io/3DGame/GamePlay'">Play!</button>
+Website <a href="https://d4q2.github.io/3DGame/GamePlay" style="font: bold 11px Arial; text-decoration: none; background-color: #EEEEEE; color: #333333; padding: 2px 6px 2px 6px; border-top: 1px solid #CCCCCC; border-right: 1px solid #333333; border-bottom: 1px solid #333333; border-left: 1px solid #CCCCCC;">here</a>.
