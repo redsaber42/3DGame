@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
    <head>
-      <title>Joystick Game Test 1.0.14</title>
+      <title>Joystick Game Test 1.0.15</title>
       <style>
 	      body {
 		      margin: 0;
@@ -55,7 +55,7 @@
 	            
 	// Create Camera
 	camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
-	camera.position.set(0, 2, 2);
+	camera.position.set(0, 10, 10);
 	camera.lookAt( scene.position );
 	      
 	// Create Clock
@@ -86,9 +86,9 @@
 	scene.add(cube);
 	      
 	var planeGeometry = new THREE.PlaneGeometry(20,20,20);
-	var planeMaterial = new THREE.MeshLambertMaterial({ color: 'rgb(255,255,255)' });
+	var planeMaterial = new THREE.MeshLambertMaterial({ color: 'rgb(255,0,255)' });
 	var plane = new THREE.Mesh(cubeGeometry, cubeMaterial);
-	plane.position.set( 0, -30, 0 );
+	plane.position.set( 0, 0, 0 );
 	scene.add(plane);  
 	      
 	var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
