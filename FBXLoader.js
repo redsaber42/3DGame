@@ -3884,3 +3884,5 @@
 	}
 
 } )();
+
+export { FBXLoader };
