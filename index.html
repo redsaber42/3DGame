@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>Joystick Game Test 1.0.14</title>
+      <style>
+	      body {
+		      margin: 0;
+		      position: fixed;
+		      background-color: lightblue;
+	      }  
+	      
+	      canvas {
+		      display: block;
+		      position:fixed;
+	      }
+      </style>
+   </head>
+   <body>
+      <div id="help" style="position:fixed; left:40%; top:4%; color:grey;">
+         virtualjoystick.js Limit Stick-Travel Demo with Stationary Base
+      </div>
+
+      <div id="debug1" style="position:fixed; left:5%; top:4%; color:grey;">
+         Debug Info X is not currently available.
+      </div>
+
+      <div id="debug2" style="position:fixed; left:5%; top:8%; color:grey;">
+		     Debug Info Z is not currently available.  
+      </div>
+	   
+      <canvas id="sceneCanvas"></canvas>
+	   
+           <script src="JS/three.min.js"></script>
+           <script src="JS/keyboard.js"></script>
+	   <script src="JS/inflate.min.js"></script>
+	   <script src="FBXLoader.js"></script>
+	   
+      <!-- The first part has the scene setup -->   
+      <script>
+	var sceneCanvas = document.getElementById("sceneCanvas");
+	var scene;
+	// Create Scene
+        scene = new THREE.Scene();
+
+	// Will be removed in later version
+	//var debugText1 = document.getElementById("debug1");
+	//var debugText2 = document.getElementById("debug2");
+      </script> 
+ 
+	   
+      <script src="JS/virtualjoystick.js"></script>  
+      <script>
+	// The Setup Part \\
+	var camera, renderer, clock, deltaTime, totalTime, keyboard;
+	            
+	// Create Camera
+	camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
+	camera.position.set(0, 2, 2);
+	camera.lookAt( scene.position );
+	      
+	// Create Clock
+	clock = new THREE.Clock();
+	deltaTime = 0;
+	totalTime = 0;
+	   
+	// Create Light
+	let ambientLight = new THREE.AmbientLight( 0xcccccc, 1.00 );
+	ambientLight.position.set(0, 10, 10);
+	scene.add( ambientLight );
+	      
+	 
+
+	keyboard = new Keyboard();
+
+	      
+	      
+        var renderer = new THREE.WebGLRenderer({antialias: true, canvas: sceneCanvas});
+	renderer.setSize(window.innerWidth, window.innerHeight);
+	document.body.appendChild(renderer.domElement);
+	window.addEventListener('resize', onWindowResize, false); 
+
+	var cubeGeometry = new THREE.CubeGeometry(1,1,1);
+	var cubeMaterial = new THREE.MeshLambertMaterial({ color: 'rgb(0,0,255)' });
+	var cube = new THREE.Mesh(cubeGeometry, cubeMaterial);
+	cube.position.set( 0, 0, 0 );
+	scene.add(cube);
+	      
+	var planeGeometry = new THREE.PlaneGeometry(20,20,20);
+	var planeMaterial = new THREE.MeshLambertMaterial({ color: 'rgb(255,255,255)' });
+	var plane = new THREE.Mesh(cubeGeometry, cubeMaterial);
+	plane.position.set( 0, -30, 0 );
+	scene.add(plane);  
+	      
+	var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+	if (isMobile) {
+		if (/iPhone/i.test(navigator.userAgent)) {
+			alert("This web application does not work very well on iPhone's. You may want to switch to a tablet or computer for a better experience.");
+		}
+		if (window.innerWidth > window.innerHeight) {
+		   // Landscape
+		   var joystick = new VirtualJoystick({
+                      mouseSupport: true,
+		      stationaryBase: true,
+                      baseX: window.innerWidth / 6,
+                      baseY: window.innerHeight / 2,
+		      limitStickTravel: true,
+		      stickRadius: 50
+                   }); 
+		}
+		else { 
+		    // Portrait
+	            var joystick = new VirtualJoystick({
+                      mouseSupport: true,
+		      stationaryBase: true,
+                      baseX: window.innerWidth / 6,
+                      baseY: window.innerHeight / 4 * 3,
+		      limitStickTravel: true,
+		      stickRadius: 50
+                   }); 
+		}
+		
+	}   
+	 
+	      
+	      
+	      
+	      
+	// The Gameplay Part \\
+	animate();
+
+	function animate(){
+   
+   	   requestAnimationFrame(animate);
+
+   	   deltaTime = clock.getDelta();
+           totalTime += deltaTime;
+		
+           if(mixer) {
+		   mixer.update(deltaTime)
+	   }
+		
+           update();
+           render();
+		
+           // Will be removed in later version
+   	   //debugText1.innerHTML = "Cube position X: " + cube.position.x.toFixed(1);
+  	   //debugText2.innerHTML = "Cube position Z: " + cube.position.z.toFixed(1);
+   
+	}
+	      
+      function render()
+      {
+        renderer.render( scene, camera );
+      }
+	      
+      function update(){
+        if(!isMobile) {
+	  keyboard.update();
+	}
+
+		
+	let translateSpeed = 1; // units per second
+	let distance = translateSpeed * deltaTime;
+   
+	if(!isMobile){
+	  if( keyboard.isKeyPressed("D") ){
+ 	    cube.translateX( distance );
+   	  }
+   	  if( keyboard.isKeyPressed("A") ){
+ 	    cube.translateX( -distance );
+  	  }
+   	  if( keyboard.isKeyPressed("W") ){
+	     cube.translateZ( -distance );
+   	  }
+   	  if( keyboard.isKeyPressed("S") ){
+ 	    cube.translateZ( distance );
+   	  }
+	}
+
+        if (isMobile) {
+	   if( joystick.right() ){
+	     cube.translateX( distance );  
+   	   }
+  	   if( joystick.left() ){
+	     cube.translateX( -distance );   
+ 	   }
+  	   if( joystick.up() ){
+	     cube.translateZ( -distance );      
+ 	   }
+ 	   if( joystick.down() ){
+ 	     cube.translateZ( distance );
+   	   }
+	}
+
+      }
+  	  
+      function onWindowResize(){
+   	  camera.aspect = window.innerWidth / window.innerHeight;
+  	  camera.updateProjectionMatrix();
+   	  renderer.setSize( window.innerWidth, window.innerHeight );   
+      }
+      </script>
+   </body>
+</html>
