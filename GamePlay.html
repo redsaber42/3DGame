@@ -31,7 +31,7 @@
 	   
            <script src="JS/three.min.js"></script>
            <script src="JS/keyboard.js"></script>
-	   <script src="JS/GLTFLoader.js"></script>
+	   <script src="JS/FBXLoader.js"></script>
 	   
       <!-- The first part has the scene setup -->   
       <script>
@@ -71,8 +71,8 @@
 	keyboard = new Keyboard();
 
 	 // model
-         var loader = new GLTFLoader();
-         loader.load( 'JS/Crypto.glb', function ( object ) {
+         var loader = new FBXLoader();
+         loader.load( 'fbx/Rifle Run.fbx', function ( object ) {
    
             mixer = new THREE.AnimationMixer( object );
    
